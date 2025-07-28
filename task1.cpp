@@ -1,6 +1,9 @@
 #include<stdio.h>
-
+#include<omp.h>
 int main(){
-	printf("Hello");
-	printf(" world\n");
+    #pragma omp parallel
+    {
+        printf("Hello");
+        printf(" world\n");
+    }
 }
