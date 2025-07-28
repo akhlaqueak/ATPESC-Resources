@@ -28,7 +28,7 @@ int main()
         for (int i = id*chunk+1; i <= num_steps && i<=(id+1)*chunk; i++)
         {
             x = (i - 0.5) * step;
-            sum[id] = sum[id] + 4.0 / (1.0 + x * x);
+            sum[id] += 4.0 / (1.0 + x * x);
         }
     }
     for(unsigned int i=0; i<n_threads;i++)
