@@ -4,7 +4,7 @@ static long num_steps = 100000000;
 double step;
 int main()
 {
-    typedef ui unsigned int;
+    using ui = unsigned int;
     double pi;
     double start_time, run_time;
     ui n_threads = 32;
