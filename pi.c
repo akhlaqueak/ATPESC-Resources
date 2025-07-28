@@ -4,10 +4,9 @@ static long num_steps = 100000000;
 double step;
 int main()
 {
-    using ui = unsigned int;
     double pi;
     double start_time, run_time;
-    ui n_threads = 32;
+    unsigned int n_threads = 32;
 
     double *sum = new double[n_threads];
 
@@ -15,16 +14,16 @@ int main()
     double sum_all = 0;
 
     start_time = omp_get_wtime();
-    for(ui i=0; i<n_threads;i++)
+    for(unsigned int i=0; i<n_threads;i++)
         sum[i] = 0;
 
 #pragma omp parallel
     {
         n_threads = omp_get_num_threads();
         double x, sum = 0;
-        ui chunk = num_steps/n_threads+1;
+        unsigned int chunk = num_steps/n_threads+1;
 
-        ui id = omp_get_thread_num();
+        unsigned int id = omp_get_thread_num();
 
         for (int i = id*chunk+1; i <= num_steps && i<=(id+1)*chunk; i++)
         {
@@ -32,7 +31,7 @@ int main()
             sum[id] = sum[id] + 4.0 / (1.0 + x * x);
         }
     }
-    for(ui i=0; i<n_threads;i++)
+    for(unsigned int i=0; i<n_threads;i++)
         sum_all+=sum[i];
 
     pi = step * sum_all;
