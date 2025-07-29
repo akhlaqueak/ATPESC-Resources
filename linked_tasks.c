@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
     {
         #pragma omp once
         while(p!=NULL){
-            #pragma omp task
+            #pragma omp task firstprivate(p)
             processwork(p);
             p=p->next;
         }
