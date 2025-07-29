@@ -14,7 +14,7 @@ int main ()
 	  start_time = omp_get_wtime();
 #pragma omp parallel for reduction (+:sum)
 	  for (i=1;i<= num_steps; i++){
-		  double x = (i-0.5)*step;
+		   x = (i-0.5)*step;
 		  sum = sum + 4.0/(1.0+x*x);
 	  }
 
