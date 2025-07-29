@@ -33,7 +33,7 @@ int main(){
 //   Loop over grid of points in the complex plane which contains the Mandelbrot set,
 //   testing each point to see whether it is inside or outside the set.
 
-#pragma omp parallel for private(eps)
+#pragma omp parallel for private(eps, creal, cimag)
    for (i=0; i<NPOINTS; i++) {
      for (j=0; j<NPOINTS; j++) {
        creal = -2.0+2.5*(double)(i)/(double)(NPOINTS)+eps;
