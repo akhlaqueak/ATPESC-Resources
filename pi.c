@@ -14,7 +14,6 @@ int main()
 
 #pragma omp parallel
     {
-        double sum = 0;
         unsigned int n_threads = omp_get_num_threads();
         double x, sum = 0;
         unsigned int chunk = num_steps / n_threads + 1;
