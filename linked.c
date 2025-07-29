@@ -90,8 +90,10 @@ int main(int argc, char *argv[]) {
 
    // traverse the list process work for each node
    start = omp_get_wtime();
+   #pragma omp parallel
    while (p != NULL) {
       processwork(p);
+      #pragma omp critical
       p = p->next;
    }
    end = omp_get_wtime();
