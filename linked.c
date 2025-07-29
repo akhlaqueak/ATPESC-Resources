@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
         size++;
     }
 
-    node** arr=new node[size];
+    node** arr=new node*[size];
     unsigned int i=0;
     while(p!=NULL){
         arr[i++] = p;
