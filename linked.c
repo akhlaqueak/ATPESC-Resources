@@ -98,16 +98,24 @@ int main(int argc, char *argv[])
 
     // traverse the list process work for each node
     start = omp_get_wtime();
-#pragma omp parallel
-    {
-
-        while (p != NULL)
-        {
-            processwork(p);
-#pragma omp critical
-            p = p->next;
-        }
+    p = head;
+    unsigned int size=0;
+    while(p!=NULL){
+        p=p->next;
+        size++;
     }
+
+    node* arr=new node[size];
+    unsigned int i=0;
+    while(p!=NULL){
+        arr[i++] = p;
+        p=p->next;
+    }
+#pragma omp parallel for
+    for(unsigned int i=0;i<size;i++){
+        processwork(arr[i]);
+    }
+    
     end = omp_get_wtime();
 
     // traverse the list releasing memory allocated for the list
