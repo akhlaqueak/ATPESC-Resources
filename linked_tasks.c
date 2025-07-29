@@ -101,7 +101,8 @@ int main(int argc, char *argv[])
 
 #pragma omp parallel
     {
-#pragma omp once
+#pragma omp single
+        p=head;
         while (p != NULL)
         {
 #pragma omp task firstprivate(p)
