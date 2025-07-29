@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
         size++;
     }
 
-    node* arr=new node[size];
+    node** arr=new node[size];
     unsigned int i=0;
     while(p!=NULL){
         arr[i++] = p;
@@ -115,7 +115,7 @@ int main(int argc, char *argv[])
     for(unsigned int i=0;i<size;i++){
         processwork(arr[i]);
     }
-    
+
     end = omp_get_wtime();
 
     // traverse the list releasing memory allocated for the list
