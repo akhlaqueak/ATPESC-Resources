@@ -2,6 +2,18 @@
 #include <omp.h>
 static long num_steps = 100000000;
 double step;
+
+double calc_sum(unsigned int i)
+{
+	double sum = 0;
+	if (i == 0)
+		return sum;
+	double x = (i - 0.5) * step;
+	sum = sum + 4.0 / (1.0 + x * x);
+	sum += calc_sum(--i);
+	return sum;
+}
+
 int main()
 {
 	int i;
@@ -24,13 +36,3 @@ int main()
 	printf("\n pi with %ld steps is %lf in %lf seconds\n ", num_steps, pi, run_time);
 }
 
-double calc_sum(unsigned int i)
-{
-	double sum = 0;
-	if (i == 0)
-		return sum;
-	double x = (i - 0.5) * step;
-	sum = sum + 4.0 / (1.0 + x * x);
-	sum += calc_sum(--i);
-	return sum;
-}
