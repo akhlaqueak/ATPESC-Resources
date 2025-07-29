@@ -102,7 +102,6 @@ int main(int argc, char *argv[])
 #pragma omp parallel
     {
 #pragma omp single
-        p=head;
         while (p != NULL)
         {
 #pragma omp task firstprivate(p)
@@ -121,7 +120,7 @@ int main(int argc, char *argv[])
         free(p);
         p = temp;
     }
-    free(p);
+    // free(p);
     printf("Compute Time: %f seconds\n", end - start);
     return 0;
 }
